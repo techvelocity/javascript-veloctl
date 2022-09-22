@@ -39,7 +39,9 @@ function getUrl(version: string): string {
   return `https://releases.velocity.tech/veloctl/v${version}/veloctl_${version}_${platform}_${arch}.tar.gz`
 }
 
-async function resolveVersion(requestedVersion?: string): Promise<string> {
+export async function resolveVersion(
+  requestedVersion?: string
+): Promise<string> {
   let version = requestedVersion
   if (!version || !semver.valid(version)) {
     version = await latest()
@@ -49,24 +51,15 @@ async function resolveVersion(requestedVersion?: string): Promise<string> {
   return version
 }
 
-type DownloadResult = {
-  path: string
-  version: string
-}
-
-export async function download(
-  requestedVersion?: string
-): Promise<DownloadResult> {
-  const version = await resolveVersion(requestedVersion)
-  const toolUrl = getUrl(version)
+export async function downloadVersion(
+  resolvedVersion: string
+): Promise<string> {
+  const toolUrl = getUrl(resolvedVersion)
   core.debug(`Download url: ${toolUrl}`)
 
   const archivePath = await tc.downloadTool(toolUrl)
   const extractedPath = await tc.extractTar(archivePath)
 
   core.addPath(extractedPath)
-  return {
-    path: path.join(extractedPath, 'veloctl'),
-    version
-  }
+  return path.join(extractedPath, 'veloctl')
 }
