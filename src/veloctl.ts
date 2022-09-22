@@ -80,3 +80,18 @@ export async function createOrUpdate(
   core.info(`${verb} output:\n${filteredStdout}`)
   return true
 }
+
+export async function destroy(
+  token: string,
+  envName: string
+): Promise<boolean> {
+  const output = await execVeloctl(token, [
+    'env',
+    'destroy',
+    '--confirm',
+    envName
+  ])
+
+  core.info(`Destroy:\n${output.stdout}\n${output.stderr}`)
+  return output.exitCode === 0
+}
