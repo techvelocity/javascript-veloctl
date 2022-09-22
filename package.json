@@ -1,0 +1,44 @@
+{
+  "name": "@techvelocity/veloctl",
+  "version": "1.0.0",
+  "description": "Github Actions library for communicating with the veloctl CLI",
+  "main": "lib/main.js",
+  "types": "lib/main.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write '**/*.ts'",
+    "format-check": "prettier --check '**/*.ts'",
+    "lint": "eslint src/**/*.ts",
+    "prepare": "npm run build && npm run format && npm run lint"
+  },
+  "repository": "https://github.com/techvelocity/javascript-veloctl.git",
+  "keywords": [
+    "actions",
+    "velocity",
+    "veloctl"
+  ],
+  "author": "Velocity <support@velocity.tech>",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.9.1",
+    "@actions/exec": "^1.1.1",
+    "@actions/github": "^5.0.3",
+    "@actions/tool-cache": "^2.0.1",
+    "@octokit/action": "^4.0.8",
+    "node-fetch": "^2.6.6",
+    "semver": "^7.3.7"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.5",
+    "@types/node-fetch": "^2.6.2",
+    "@types/semver": "^7.3.12",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.0",
+    "eslint-plugin-github": "^4.3.7",
+    "prettier": "2.7.1",
+    "typescript": "^4.8.2"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
