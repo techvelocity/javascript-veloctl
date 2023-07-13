@@ -36,7 +36,7 @@
     "eslint-plugin-jest": "^27.0.4",
     "jest": "^29.0.3",
     "node-fetch": "^2.6.6",
-    "semver": "^7.3.7",
+    "semver": "^7.5.2",
     "ts-jest": "^29.0.1"
   },
   "devDependencies": {
